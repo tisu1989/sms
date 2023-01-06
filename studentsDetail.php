@@ -238,7 +238,7 @@
                             ?>
                         <!-- <span id="showDataField_<?php echo $counter ?>_9"><?php echo $row[4]?></span> -->
                         <!-- <input id="showInputField_<?php echo $counter ?>_10" class="hide" type="text" name="courseFee1" value="<?php echo $row[4] ?>"/> -->
-                        <select class="custom-select hide" name="course1"  id="showInputField_<?php echo $counter ?>_10">
+                        <select class="custom-select hide" name="course1" id="showInputField_<?php echo $counter ?>_10">
                             <option value="">Choose...</option>
                             <?php
                                 $sql2 = "select * from coursedetails";
@@ -252,7 +252,7 @@
                                     while($row2 = mysqli_fetch_array($retval2)) {
                                     // $counter++;
                             ?> 
-                            <option value="<?php echo $row2[0] ?>" <?php $row[4] === $row2[0]? 'selected': false; ?>><?php echo $row2[1]?>, <?php echo $row2[2]?>, <?php echo $row2[3] ?></option>
+                            <option value="<?php echo $row2[0] ?>" <?php if($row[4] == $row2[0]){ ?>selected<?php } ?>><?php echo $row2[1]?>, <?php echo $row2[2]?>, <?php echo $row2[3] ?></option>
                             <?php 
                                     }
                                 }
@@ -264,8 +264,8 @@
                         <!-- <input id="showInputField_<?php echo $counter ?>_12" class="hide" type="text" name="courseFee1" value="<?php echo $row[5] ?>"/> -->
                         <select id="showInputField_<?php echo $counter ?>_12" class="custom-select hide" name="subscription1" value="<?php echo $row[5] ?>">
                             <option value="">Choose...</option>
-                            <option value="true">True</option>
-                            <option value="false">False</option>
+                            <option value="true" <?php if($row[5]== 'true'){ ?>selected <?php } ?>>True</option>
+                            <option value="false" <?php if($row[5]== 'false'){ ?>selected <?php } ?>>False</option>
                         </select>
                     </td>
                     <td>
