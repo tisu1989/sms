@@ -1,7 +1,7 @@
 <?php 
-  require 'partials/_nav.php';
-  require 'header.php'; 
-  include_once 'db.php';
+  require './header.php'; 
+  require './partials/_nav.php';
+  include_once './db.php';
   @$courseIdErr = $courseNameErr = $courseFeeErr = $courseDurationErr = "";
   @$courseId = $courseName = $courseFee = $courseDuration = "";
   @$signup = false;
@@ -230,5 +230,5 @@
 </script>
 
 <?php
- require 'footer.php';
+ require './footer.php';
 ?>

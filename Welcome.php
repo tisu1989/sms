@@ -1,6 +1,6 @@
 <?php 
-  require 'partials/_nav.php';
-  require 'header.php'; 
+  require './partials/_nav.php';
+  require './header.php'; 
 ?>
   <div class="container" style="margin-top: 50px;">
     <div class="row">
@@ -37,6 +37,6 @@
 </div>
 </div>
 <?php
- require 'footer.php';
+ require './footer.php';
 ?>
    

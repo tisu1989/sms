@@ -1,5 +1,5 @@
 <?php 
-  include_once 'db.php';
+  include_once './db.php';
   $signup = false;
   $msg= '';
   if($_SERVER["REQUEST_METHOD"] == "POST"){
@@ -26,10 +26,22 @@
     }
 }
 ?>
-<?php
-  require 'partials/_nav.php';
-  require 'header.php';
-?>
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <title>Login</title>
+  </head>
+  <body>
+    <?php
+    include_once './partials/_nav.php';
+    ?>
 <?php
     if($signup){
     echo ' <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -52,7 +64,7 @@
     <h1 class="text-center">Signup to our website</h1>
     <div class="col-3" style="margin:40px auto">
         
-        <form action="/sms/signup.php" method="post">
+        <form action="./signup.php" method="post">
             <div class="form-group">
                 <label for="username">Name</label>
                 <input type="text" class="form-control" id="username" name="username" aria-describedby="emailHelp" require>
@@ -75,11 +87,14 @@
             </div>
             
             <button type="submit" class="btn btn-primary">Signup</button>
+            <br/>
+            <br/>
+            <a href="./login.php">Back to login</a>
         </form>
     </div>
 </div>
 
 
 <?php
- require 'footer.php';
+ require './footer.php';
 ?>

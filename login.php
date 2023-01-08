@@ -17,7 +17,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 session_start();
                 $_SESSION['loggedin'] = true;
                 $_SESSION['username'] = $username;
-                header("location: welcome.php");
+                header("location: ./welcome.php");
+                exit;
             // } 
             // else{
             //     $showError = "Invalid Credentials1";
@@ -45,7 +46,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     <title>Login</title>
   </head>
   <body>
-    <?php require 'partials/_nav.php' ?>
+    <?php require './partials/_nav.php' ?>
     <?php
     if($login){
     echo ' <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -68,7 +69,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     <div class="container my-4">
         <h1 class="text-center">Login to our website</h1>
         <div class="col-3" style="margin:0px auto">
-            <form action="/sms/login.php" method="post">
+            <form action="./login.php" method="post">
                 <div class="form-group">
                     <label for="username">Username</label>
                     <input type="text" class="form-control" id="username" name="username" aria-describedby="emailHelp">
@@ -81,6 +82,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             
                 
                 <button type="submit" class="btn btn-primary">Login</button>
+                <br/>
+                <br/>
+                <a href="./signup.php">Register here</a>
             </form>
         </div>
     </div>

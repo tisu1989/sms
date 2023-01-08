@@ -1,6 +1,6 @@
 <?php 
-  require 'partials/_nav.php';
-  require 'header.php'; 
+  require './partials/_nav.php';
+  require './header.php'; 
   include_once 'db.php';
   @$rollnoErr = $nameErr = $amountErr ="";
   @$rollno = $name = $amount = "";
@@ -257,5 +257,5 @@
 </script>
 
 <?php
- require 'footer.php';
+ require './footer.php';
 ?>

@@ -1,7 +1,7 @@
 <?php 
-  require 'partials/_nav.php';
-  require 'header.php'; 
-  include_once 'db.php';
+  require './partials/_nav.php';
+  require './header.php'; 
+  include_once './db.php';
   @$rollnoErr = $nameErr = $emailErr = $contactErr = $courseErr = $subscriptionErr = "";
   @$rollno = $name = $email = $contact = $course = $subscription = "";
   @$signup = false;
@@ -330,5 +330,5 @@
 </script>
 
 <?php
- require 'footer.php';
+ require './footer.php';
 ?>
