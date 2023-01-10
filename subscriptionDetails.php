@@ -27,14 +27,24 @@
             }
 
             if(!empty($_POST["rollno"]) && !empty($_POST["name"]) && !empty($_POST["amount"])){
-                $sql = "INSERT INTO `subscriptionsdetail`(`rollno`, `subscriptionName`, `amount`) VALUES ('$rollno','$name','$amount')";
-                $result = mysqli_query($conn,$sql);
-                if ($result){
-                    $signup = true;
+                $sql_2 = "SELECT * FROM `studentsdetail` WHERE `rollno` = $rollno";
+                $result_2 = mysqli_query($conn,$sql_2);
+                $num_2 = mysqli_num_rows($result_2);
+                if ($num_2 > 0){
+                    $sql = "INSERT INTO `subscriptionsdetail`(`rollno`, `subscriptionName`, `amount`) VALUES ('$rollno','$name','$amount')";
+                    $result = mysqli_query($conn,$sql);
+                    if ($result){
+                        $signup = true;
+                    }else{
+                        $signup = false;
+                        $msg = 'Something went wrong!';
+                    }
                 }else{
                     $signup = false;
-                    $msg = 'Something went wrong!';
+                    $msg = 'Roll no. doen not exits! Please try to add valid roll no.';
                 }
+
+                
             }
         }
         if (!empty($_POST['delete-submit'])) { 
@@ -64,7 +74,7 @@
 <?php
     if($signup){
     echo ' <div class="alert alert-success alert-dismissible fade show" role="alert">
-        <strong>Success!</strong> User hasbeen created.
+        <strong>Success!</strong> Subcription hasbeen done.
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
         </button>
@@ -84,7 +94,7 @@
         <thead>
             <tr>
             <th width="15%">#</th>
-            <th width="15%">Roll no.</th>
+            <th width="15%">Student Name</th>
             <th width="30%">Course Name</th>
             <th width="20%">Amount</th>
             <th width="20">Action</th>
@@ -164,8 +174,23 @@
 
                     <th scope="row"><?php echo $counter; ?></th>
                     <td>
-                        <span id="showDataField_<?php echo $counter ?>_1"><?php echo $row[0]?></span>
-                        <input id="showInputField_<?php echo $counter ?>_2" type="hidden" name="rollno1" value="<?php echo $row[0] ?>"/>
+                        <?php 
+                            $sql_1 = "select * from studentsdetail where rollno=$row[0]";
+                            $retval_1 = mysqli_query($conn, $sql_1);
+                            $num_1 = mysqli_num_rows($retval_1);
+                            if(!$retval_1) {
+                                die('Could not get data: ' . mysql_error());
+                            }
+                            
+                            if($num_1 > 0){
+                                while($row_1 = mysqli_fetch_array($retval_1)) {
+                        ?>
+                        <span id="showDataField_<?php echo $counter ?>_1"><?php echo $row_1[1]?></span>
+                        <input id="showInputField_<?php echo $counter ?>_2" type="hidden" name="rollno1" value="<?php echo $row_1[1] ?>"/>
+                    <?php
+                                }
+                            }
+                    ?>
                     </td>
                     <td>
                             <?php
